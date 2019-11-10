@@ -113,6 +113,18 @@ class UpdateDatabase(webapp2.RequestHandler):
 
         self.redirect("/")
 
+class AboutPage(webapp2.RequestHandler):
+    def get(self):
+        template_vars = {
+        
+        }
+        template = jinja_env.get_template("templates/about-page.html")
+        self.response.write(template.render(template_vars))
+
+
+    def post(self):
+        pass
+
 class AddReview(webapp2.RequestHandler):
     def get(self):
         pass
@@ -132,5 +144,6 @@ app = webapp2.WSGIApplication([
     ("/add-housing-option", AddHousingOptionPage),
     ("/update-database", UpdateDatabase),
     ("/housing", HousingPage),
-    ("/add-review", AddReview)
+    ("/add-review", AddReview),
+    ("/about-page", AboutPage)
 ], debug=True)
