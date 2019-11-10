@@ -108,4 +108,6 @@ venv.bak/
 
 .vscode/
 
+#files and file extensions
 test.*
+*.pyc
