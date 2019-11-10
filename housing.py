@@ -20,6 +20,21 @@ def create_housing_option(option_name, option_rating, option_location, option_ph
     new_option.put()
     # return new_option.key()
 
+def calculate_average_rating(housing_option):
+    total_rating_score = 0
+    user_reviews = housing_option.reviews
+    if len(user_reviews) != 0:
+        for review in user_reviews:
+            total_rating_score += review.rating
+        housing_option.rating = total_rating_score / len(user_reviews)
+    else:
+        housing_option.rating = 0
+        
+    housing_option.put()
+    
+    
+
+
 # def get_id(housing_option_key):
 #     pair = housing_option_key.pairs()
 #     return (housing_option_key.urlsafe(), pair[0][1])
