@@ -12,6 +12,12 @@ body {
 
 #title {
   font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  padding-left: 10px;
+}
+
+#subtitle {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }
 
