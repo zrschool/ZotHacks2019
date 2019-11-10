@@ -21,7 +21,24 @@ class HousingOption(ndb.Model):
     TODO:
     - Make add_housing_option function (see lines 31 through 44)
         - Take parameters: (name, rating, description="no description found")
+        - Make key
 """
+
+def make_housing_option(housing_name, average_rating, housing_description):
+    '''
+    Creates HousingOption Model
+    '''
+    return HousingOption(
+        name = housing_name,
+        rating = average_rating,
+        description = housing_description
+    )
+
+def get_key(housing_option):
+    '''
+    Get model's id and puts the model into the database
+    '''
+    return housing_option.put()
 
 
 class MainPage(webapp2.RequestHandler):
