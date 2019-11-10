@@ -18,4 +18,4 @@ def create_user_review(reviewing_user, submit_time, housing_name ,housing_review
         review = housing_review,
         rating = housing_rating
     )
-    return user_review.put()
+    user_review.put()
