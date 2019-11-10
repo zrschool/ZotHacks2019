@@ -5,14 +5,14 @@
     <title></title>
   </head>
   <body>
-    <form id="submission" method="post" action="/update-database">
-      <input type="text" name="name" placeholder="Name of the housing option" required>
+    <form id="submission" method="POST" action="/update-database">
+      <input type="text" name="option-name" placeholder="Name of the housing option" required>
       <p>Rating</p>
-      <input type="radio" name="rating" value="1"> 1
-      <input type="radio" name="rating" value="2"> 2
-      <input type="radio" name="rating" value="3"> 3
-      <input type="radio" name="rating" value="4"> 4
-      <input type="radio" name="rating" value="5"> 5
+      <input type="radio" name="option-rating" value="1.0"> 1
+      <input type="radio" name="option-rating" value="2.0"> 2
+      <input type="radio" name="option-rating" value="3.0"> 3
+      <input type="radio" name="option-rating" value="4.0"> 4
+      <input type="radio" name="option-rating" value="5.0"> 5
       <input type="submit" name="submit" value="Add Housing Option" class="button" id="submit">
     </form>
   </body>
