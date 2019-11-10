@@ -53,6 +53,29 @@ class MainPage(webapp2.RequestHandler):
         pass
 
 
+class AddHousingOptionPage(webapp2.RequestHandler):
+    def get(self):
+
+
+
+        template_vars = {
+            # "var_name" : var_name,
+        }
+
+        template = jinja_env.get_template("templates/add-housing-option.html")
+        self.response.write(template.render(template_vars))
+
+    def post(self):
+        pass
+
+
+class UpdateDatabase(webapp2.RequestHandler):
+    def post(self):
+        pass
+
+
 app = webapp2.WSGIApplication([
     ("/", MainPage),
+    ("/add-housing-option", AddHousingOptionPage),
+    ("/update-database", UpdateDatabase),
 ], debug=True)
