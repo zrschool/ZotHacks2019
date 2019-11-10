@@ -28,4 +28,4 @@ def get_rating(housing_option):
     return housing_option.key.rating
 
 def get_description(housing_option):
-    return housing_option.key.rating
+    return housing_option.key.description
