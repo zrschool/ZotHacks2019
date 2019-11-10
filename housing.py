@@ -22,10 +22,10 @@ def get_entry(housing_option_key):
     return housing_option_key.get()
 
 def get_name(housing_option):
-    return housing_option.key.name
+    return housing_option.name
 
 def get_rating(housing_option):
-    return housing_option.key.rating
+    return housing_option.rating
 
 def get_description(housing_option):
-    return housing_option.key.description
+    return housing_option.description

@@ -65,8 +65,17 @@ class MainPage(webapp2.RequestHandler):
         print("NEW PROFILE ADDED")
         print(mesa_court_towers_key)
 
+        output = mesa_court_towers_key[0]
+
         template_vars = {
-            # "var_name" : var_name,
+            '''
+            A bunch of things to use through jinja
+            '''
+            "key" : output,
+            "id" : str(mesa_court_towers_key[1]),
+            "name" : housing.get_name(mesa_court_towers),
+            "rating" : housing.get_rating(mesa_court_towers),
+            "description" : housing.get_description(mesa_court_towers)
         }
 
         template = jinja_env.get_template("templates/main.html")
@@ -82,7 +91,7 @@ class AddHousingOptionPage(webapp2.RequestHandler):
 
 
         template_vars = {
-            # "var_name" : var_name,
+            "var_name" : var_name,
         }
 
         template = jinja_env.get_template("templates/add-housing-option.html")
