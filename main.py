@@ -5,11 +5,11 @@ import logging
 import housing
 import reviews
 import datetime
-
+import sys
 from google.appengine.ext import ndb
 from google.appengine.api import users
 
-
+sys.dont_write_bytecode = True
 jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
 )
@@ -79,13 +79,13 @@ class AddHousingOptionPage(webapp2.RequestHandler):
 class HousingPage(webapp2.RequestHandler):
     def get(self):
         housing_id = self.request.get("id")
-        housing_query = list(HousingOption.query().fetch())
+        housing_query = housing.housing_option_list()
         current_housing = HousingOption(
             name = "dsa",
             rating = 0.0
         )
         for option in housing_query:
-            if get_key_id(option) == int(housing_id):
+            if housing.get_id(option) == int(housing_id):
                 current_housing = option
 
 
