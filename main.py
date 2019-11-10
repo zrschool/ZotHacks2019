@@ -19,6 +19,7 @@ class HousingOption(ndb.Model):
     name = ndb.StringProperty()
     rating = ndb.FloatProperty()
     location = ndb.StringProperty()
+    photo = ndb.StringProperty()
     # description = ndb.StringProperty()
 
 def make_housing_option(housing_name, average_rating, housing_description):
@@ -107,7 +108,8 @@ class UpdateDatabase(webapp2.RequestHandler):
         housing_option_name = str(self.request.get("option-name"))
         housing_option_rating = float(self.request.get("option-rating"))
         housing_option_location = str(self.request.get('option-location'))
-        housing.create_housing_option(housing_option_name, housing_option_rating, housing_option_location)
+        housing_option_photo = str(self.request.get('option-photo'))
+        housing.create_housing_option(housing_option_name, housing_option_rating, housing_option_location, housing_option_photo)
 
         self.redirect("/")
 
