@@ -1,6 +1,7 @@
 import webapp2
 import jinja2
 import os
+import logging
 
 from google.appengine.ext import ndb
 from google.appengine.api import users
@@ -57,7 +58,7 @@ class MainPage(webapp2.RequestHandler):
         # so that we can use it later
         mesa_court_towers_key = mesa_court_towers.put()
         # This should print into our terminal so that we know this code ran
-        print("NEW PROFILE ADDED")
+        logging.info("NEW PROFILE ADDED")
 
         template_vars = {
             # "var_name" : var_name,
