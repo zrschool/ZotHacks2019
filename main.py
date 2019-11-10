@@ -16,7 +16,7 @@ jinja_env = jinja2.Environment(
 class HousingOption(ndb.Model):
     name = ndb.StringProperty()
     rating = ndb.FloatProperty()
-    description = ndb.StringProperty()
+    # description = ndb.StringProperty()
 
 
 """
@@ -47,35 +47,11 @@ def get_key_id(housing_option):
 class MainPage(webapp2.RequestHandler):
     def get(self):
 
-        # in terminal: dev_appserver app.yaml
-        # in browser: localhost:8080 for websit, localhost:8000 for database
-
-        # This creates an instance of the HousingOption model
-        mesa_court_towers = HousingOption(
-            name = "Mesa Court Towers",
-            rating = 4.5,
-            description = "Description TBA"
-        )
-        # This "puts" the model into the database, and saves the model's ID
-        # so that we can use it later
-        mesa_court_towers_key = get_key_id(mesa_court_towers)
-        # This should print into our terminal so that we know this code ran
-        logging.info("NEW PROFILE ADDED")
-        logging.info(mesa_court_towers_key)
-        print("NEW PROFILE ADDED")
-        print(mesa_court_towers_key)
-
-        output = mesa_court_towers_key[0]
+        # Make a list of all housing options
+        housing_options = HousingOption.query()
 
         template_vars = {
-            '''
-            A bunch of things to use through jinja
-            '''
-            "key" : output,
-            "id" : str(mesa_court_towers_key[1]),
-            "name" : housing.get_name(mesa_court_towers),
-            "rating" : housing.get_rating(mesa_court_towers),
-            "description" : housing.get_description(mesa_court_towers)
+            "housing_options" : housing_options,
         }
 
         template = jinja_env.get_template("templates/main.html")
@@ -91,7 +67,7 @@ class AddHousingOptionPage(webapp2.RequestHandler):
 
 
         template_vars = {
-            "var_name" : var_name,
+            # "var_name" : var_name,
         }
 
         template = jinja_env.get_template("templates/add-housing-option.html")
@@ -100,10 +76,10 @@ class AddHousingOptionPage(webapp2.RequestHandler):
 
 class UpdateDatabase(webapp2.RequestHandler):
     def post(self):
-        housing_option_name = self.request.get("name").lower()
-        housing_option_rating = self.request.get("rating").lower()
+        housing_option_name = str(self.request.get("option-name"))
+        housing_option_rating = float(self.request.get("option-rating"))
 
-        create_housing_option(housing_option_name, housing_option_rating)
+        housing.create_housing_option(housing_option_name, housing_option_rating)
 
         self.redirect("/")
 
