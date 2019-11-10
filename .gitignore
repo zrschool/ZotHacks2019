@@ -106,6 +106,8 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+*.pyc
+
 .vscode/
 
 test.*
