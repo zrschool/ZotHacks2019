@@ -3,12 +3,14 @@ from google.appengine.ext import ndb
 class HousingOption(ndb.Model):
     name = ndb.StringProperty()
     rating = ndb.FloatProperty()
+    location = ndb.StringProperty()
     # description = ndb.StringProperty()
 
-def create_housing_option(option_name, option_rating):
+def create_housing_option(option_name, option_rating, option_location):
     new_option = HousingOption(
         name = option_name,
         rating = option_rating,
+        location = option_location
         # description = description
     )
     new_option.put()

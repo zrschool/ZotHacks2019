@@ -18,6 +18,7 @@ jinja_env = jinja2.Environment(
 class HousingOption(ndb.Model):
     name = ndb.StringProperty()
     rating = ndb.FloatProperty()
+    location = ndb.StringProperty()
     # description = ndb.StringProperty()
 
 
@@ -112,8 +113,8 @@ class UpdateDatabase(webapp2.RequestHandler):
     def post(self):
         housing_option_name = str(self.request.get("option-name"))
         housing_option_rating = float(self.request.get("option-rating"))
-
-        housing.create_housing_option(housing_option_name, housing_option_rating)
+        housing_option_location = str(self.request.get('option-location'))
+        housing.create_housing_option(housing_option_name, housing_option_rating, housing_option_location)
 
         self.redirect("/")
 
