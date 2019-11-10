@@ -20,13 +20,6 @@ class HousingOption(ndb.Model):
     rating = ndb.FloatProperty()
     # description = ndb.StringProperty()
 
-
-"""
-    TODO:
-    - Make add_housing_option function (see lines 31 through 44)
-        - Take parameters: (name, rating, description="no description found")
-"""
-
 def make_housing_option(housing_name, average_rating, housing_description):
     '''
     Creates HousingOption Model

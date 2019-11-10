@@ -3,8 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="stylesheets/main.css">
   </head>
   <body>
+    <div id="header">
+
+      <a href="/">Jopper - a student housing resource</a>
+      <div id="about-page">
+        <a href="about-page">About</a>
+        <span>|</span>
+        <a href="add-housing-option">Add Housing Option</a>
+      </div>
+    </div>
     <form id="submission" method="POST" action="/update-database">
       <input type="text" name="option-name" placeholder="Name of the housing option" required>
       <p>Rating</p>
