@@ -1,8 +1,8 @@
 #reviews.py
-
+import sys
 from google.appengine.api import users
 from google.appengine.ext import ndb
-
+sys.dont_write_bytecode = True
 class UserReview(ndb.Model):
     user =  ndb.UserProperty()
     date_time = ndb.DateTimeProperty()

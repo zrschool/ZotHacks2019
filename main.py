@@ -5,11 +5,11 @@ import logging
 import housing
 import reviews
 import datetime
-
+import sys
 from google.appengine.ext import ndb
 from google.appengine.api import users
 
-
+sys.dont_write_bytecode = True
 jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
 )

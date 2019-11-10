@@ -1,5 +1,7 @@
 from google.appengine.ext import ndb
 import reviews
+import sys
+sys.dont_write_bytecode = True
 
 class HousingOption(ndb.Model):
     name = ndb.StringProperty()
