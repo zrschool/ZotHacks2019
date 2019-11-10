@@ -1,6 +1,8 @@
 import webapp2
 import jinja2
 import os
+import logging
+import housing
 
 from google.appengine.ext import ndb
 from google.appengine.api import users
@@ -23,6 +25,24 @@ class HousingOption(ndb.Model):
         - Take parameters: (name, rating, description="no description found")
 """
 
+def make_housing_option(housing_name, average_rating, housing_description):
+    '''
+    Creates HousingOption Model
+    '''
+    return HousingOption(
+        name = housing_name,
+        rating = average_rating,
+        description = housing_description
+    )
+
+def get_key_id(housing_option):
+    '''
+    Get model's id and puts the model into the database
+    '''
+    housing_option_key = housing_option.put()
+    pair = housing_option_key.pairs()
+    return (housing_option_key.urlsafe(), pair[0][1])
+
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
@@ -38,9 +58,12 @@ class MainPage(webapp2.RequestHandler):
         )
         # This "puts" the model into the database, and saves the model's ID
         # so that we can use it later
-        mesa_court_towers_key = mesa_court_towers.put()
+        mesa_court_towers_key = get_key_id(mesa_court_towers)
         # This should print into our terminal so that we know this code ran
+        logging.info("NEW PROFILE ADDED")
+        logging.info(mesa_court_towers_key)
         print("NEW PROFILE ADDED")
+        print(mesa_court_towers_key)
 
         template_vars = {
             # "var_name" : var_name,
