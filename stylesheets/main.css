@@ -2,9 +2,19 @@ body {
   padding: 0;
   margin: 65px 0px 0px;
 }
+h1 {
+  font-size: 185%;
+  font-family: 'Montserrat:400', sans-serif;
+}
 p {
   font-family: 'Raleway', sans-serif;
   font-size: 120%;
+}
+#abtpg {
+  font-size: 60%;
+  float:right;
+  padding: 2px;
+  margin: 7px 17px 2px 0px;
 }
 
 #content {
@@ -23,16 +33,22 @@ p {
   width: 100%;
 
 }
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+  color: white;
+
+}
 
 #left-column {
   width: 80%;
-}
 
+}
 #right-column {
   width: 20%;
   background-color: LightGoldenRodYellow;
   border-style: groove;
   margin: 2px 0px 2px 0px;
+  background-image: url(https://i.imgur.com/7F4AwHg.png);
 }
 
 .housing-option {
@@ -53,10 +69,7 @@ p {
   max-width: 300px;
 
 }
-h1 {
-  font-size: 185%;
-  font-family: 'Raleway', sans-serif;
-}
+
 
 .footer {
   padding: 3px;
