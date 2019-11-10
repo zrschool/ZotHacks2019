@@ -34,12 +34,14 @@ def calculate_average_rating(housing_option):
         
     housing_option.put()
     
-    
+def housing_option_list():
+    return list(HousingOption.query().fetch())
 
 
-# def get_id(housing_option_key):
-#     pair = housing_option_key.pairs()
-#     return (housing_option_key.urlsafe(), pair[0][1])
+def get_id(housing_option):
+    housing_option_key = housing_option.put()
+    pair = housing_option_key.pairs()
+    return pair[0][1]
 #
 # def get_entry(housing_option_key):
 #     return housing_option_key.get()
