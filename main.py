@@ -2,6 +2,7 @@ import webapp2
 import jinja2
 import os
 import logging
+import housing
 
 from google.appengine.ext import ndb
 from google.appengine.api import users
