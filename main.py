@@ -79,6 +79,10 @@ class AddHousingOptionPage(webapp2.RequestHandler):
         self.response.write(template.render(template_vars))
 
 
+class HousingPage(webapp2.RequestHandler):
+    def get(self):
+        pass
+
 class UpdateDatabase(webapp2.RequestHandler):
     def get(self):
         pass
@@ -96,4 +100,5 @@ app = webapp2.WSGIApplication([
     ("/", MainPage),
     ("/add-housing-option", AddHousingOptionPage),
     ("/update-database", UpdateDatabase),
+    ("/housing", HousingPage),
 ], debug=True)

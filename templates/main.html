@@ -17,7 +17,7 @@
         {% for item in housing_options %}
         <div class="housing-option">
           <div class="housing-info">
-            <a href="#">{{item.name}}</a>
+            <a href="housing?option={{housing_options_keys[item.name]}}">{{item.name}}</a>
             <p>Key: {{housing_options_keys[item.name]}}</p>
             <p>Location: </p>
             <p>Average rating: {{item.rating}}</p>
