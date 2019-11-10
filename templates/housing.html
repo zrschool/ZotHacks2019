@@ -21,19 +21,19 @@
       <div id="left-column">
         <div class="housing-option">
           <div class="housing-info">
-            <p>{{current_housing.name}}</p>
-            <p>Rating: {{current_housing.rating}}</p>
-
+            <p id="housing-option" style="margin:0px;">{{current_housing.name}}</p>
+            <p id="ID">ID: {{housing_id}}</p>
+            <p>Location: {{current_housing.location}} </p>
+            <p>Average rating: {{current_housing.rating}}</p>
 
           </div>
           <div>
-            <img class="housing-photo" src="{{current_housing.photo}}" alt=" ">
+            <img class="housing-photo" src="{{current_housing.photo}}" alt="No Photo Available" style="font-family: Montserrat; padding: 5px;">
           </div>
         </div>
 
       </div>
       <div id="right-column">
-        12
       </div>
     </div>
 

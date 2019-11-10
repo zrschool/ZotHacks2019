@@ -3,6 +3,13 @@ body {
   margin: 65px 0px 0px 0px;
 }
 
+.content-box {
+  color: black;
+  background-color: white;
+  margin: 5px;
+  padding: 10px;
+}
+
 #title {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
@@ -45,6 +52,7 @@ p {
 
 a:link, a:visited, a:hover, a:active {
   text-decoration: none;
+  color: DarkSlateBlue
 }
 
 #left-column {
@@ -76,6 +84,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 #housing-option {
+  color: DarkSlateBlue;
   font-size: 24pt;
   font-weight: 600;
   font-family: Montserrat;

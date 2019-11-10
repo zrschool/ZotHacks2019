@@ -92,6 +92,7 @@ class HousingPage(webapp2.RequestHandler):
 
         template_vars = {
             "current_housing" : current_housing,
+            "housing_id" : housing_id,
         }
 
         template = jinja_env.get_template("templates/housing.html")
@@ -116,7 +117,7 @@ class UpdateDatabase(webapp2.RequestHandler):
 class AboutPage(webapp2.RequestHandler):
     def get(self):
         template_vars = {
-        
+
         }
         template = jinja_env.get_template("templates/about-page.html")
         self.response.write(template.render(template_vars))
