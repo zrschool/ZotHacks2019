@@ -40,7 +40,8 @@ def get_key_id(housing_option):
     Get model's id and puts the model into the database
     '''
     housing_option_key = housing_option.put()
-    return housing_option_key.pairs()
+    pair = housing_option_key.pairs()
+    return (housing_option_key.urlsafe(), pair[0][1])
 
 
 class MainPage(webapp2.RequestHandler):
