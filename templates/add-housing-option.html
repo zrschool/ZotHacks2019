@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form id="submission" method="post" action="/update-database">
+      <input type="text" name="option-name" placeholder="Name of the housing option" required>
+      <p>Rating</p>
+      <input type="radio" name="option-rating" value="1"> 1
+      <input type="radio" name="option-rating" value="2"> 2
+      <input type="radio" name="option-rating" value="3"> 3
+      <input type="radio" name="option-rating" value="4"> 4
+      <input type="radio" name="option-rating" value="5"> 5
+      <br>
+      <input type="submit" name="submit" value="Add Housing Option" class="button" id="submit">
+    </form>
+  </body>
+</html>
