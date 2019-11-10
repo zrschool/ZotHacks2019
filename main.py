@@ -51,28 +51,24 @@ class MainPage(webapp2.RequestHandler):
         # in browser: localhost:8080 for websit, localhost:8000 for database
 
         # This creates an instance of the HousingOption model
-        mesa_court_towers = HousingOption(
-            name = "Mesa Court Towers",
-            rating = 4.5,
-            description = "Description TBA"
-        )
+        mesa_court_towers = housing.create_housing_option("Mesa Court Towers", 4.5)
         # This "puts" the model into the database, and saves the model's ID
         # so that we can use it later
-        mesa_court_towers_key = get_key_id(mesa_court_towers)
+        # mesa_court_towers_key = get_key_id(mesa_court_towers)
         # This should print into our terminal so that we know this code ran
         logging.info("NEW PROFILE ADDED")
-        logging.info(mesa_court_towers_key)
+        logging.info(housing.get_name(mesa_court_towers))
         print("NEW PROFILE ADDED")
-        print(mesa_court_towers_key)
+        print(housing.get_name(mesa_court_towers))
 
-        output = mesa_court_towers_key[0]
+        output = housing.get_id(mesa_court_towers)
 
         template_vars = {
             '''
             A bunch of things to use through jinja
             '''
             "key" : output,
-            "id" : str(mesa_court_towers_key[1]),
+            "id" : str(output[1]),
             "name" : housing.get_name(mesa_court_towers),
             "rating" : housing.get_rating(mesa_court_towers),
             "description" : housing.get_description(mesa_court_towers)
