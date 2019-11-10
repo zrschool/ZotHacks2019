@@ -17,9 +17,11 @@
         {% for item in housing_options %}
         <div class="housing-option">
           <div class="housing-info">
-            <h1>{{item}}</h1>
+            <a href="#">{{item.name}}</a>
+            <p>Key: {{housing_options_keys[item.name]}}</p>
             <p>Location: </p>
-            <p>Average rating: </p>
+            <p>Average rating: {{item.rating}}</p>
+
           </div>
           <div>
             <img class="housing-photo" src="http://mithun.com/wp-content/uploads/2017/12/Mithun_UCIMesaCourtTowers_PhotoBruceDamonte.jpg" alt="">

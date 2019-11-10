@@ -41,7 +41,7 @@ def get_key_id(housing_option):
     '''
     housing_option_key = housing_option.put()
     pair = housing_option_key.pairs()
-    return (housing_option_key.urlsafe(), pair[0][1])
+    return pair[0][1]
 
 
 class MainPage(webapp2.RequestHandler):
@@ -49,16 +49,21 @@ class MainPage(webapp2.RequestHandler):
 
         # Make a list of all housing options
         housing_options = HousingOption.query()
+        housing_options_keys = {}
+        for item in housing_options:
+            housing_options_keys[item.name] = get_key_id(item)
+
+        print(housing_options_keys)
+
 
         template_vars = {
             "housing_options" : housing_options,
+            "housing_options_keys" : housing_options_keys,
         }
 
         template = jinja_env.get_template("templates/main.html")
         self.response.write(template.render(template_vars))
 
-    def post(self):
-        pass
 
 
 class AddHousingOptionPage(webapp2.RequestHandler):
@@ -75,6 +80,9 @@ class AddHousingOptionPage(webapp2.RequestHandler):
 
 
 class UpdateDatabase(webapp2.RequestHandler):
+    def get(self):
+        pass
+
     def post(self):
         housing_option_name = str(self.request.get("option-name"))
         housing_option_rating = float(self.request.get("option-rating"))
