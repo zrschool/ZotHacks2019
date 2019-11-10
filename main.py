@@ -10,18 +10,37 @@ jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
 )
 
+
 class HousingOption(ndb.Model):
     name = ndb.StringProperty()
     rating = ndb.FloatProperty()
     description = ndb.StringProperty()
 
 
+"""
+    TODO:
+    - Deliver
 
+"""
 
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
 
+        # in terminal: dev_appserver app.yaml
+        # in browser: localhost:8080 for websit, localhost:8000 for database
+
+        # This creates an instance of the HousingOption model
+        mesa_court_towers = HousingOption(
+            name = "Mesa Court Towers",
+            rating = 4.5,
+            description = "Description TBA"
+        )
+        # This "puts" the model into the database, and saves the model's ID
+        # so that we can use it later
+        mesa_court_towers_key = mesa_court_towers.put()
+        # This should print into our terminal so that we know this code ran
+        print("NEW PROFILE ADDED")
 
         template_vars = {
             # "var_name" : var_name,
