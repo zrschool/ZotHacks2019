@@ -15,6 +15,8 @@ handlers:
   script: main.app
 - url: /housing
   script: main.app
+- url: /about-page
+  script: main.app
   login: required
 - url: /.*
   script: main.app

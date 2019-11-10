@@ -3,9 +3,9 @@ body {
   margin: 65px 0px 0px 0px;
 }
 
-h1 {
-  font-size: 185%;
-  font-family: 'Montserrat:400', sans-serif;
+#title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 
 #header a {
@@ -49,13 +49,11 @@ a:link, a:visited, a:hover, a:active {
 
 #left-column {
   width: 80%;
-
+  background-color: #212121;
 }
 #right-column {
   width: 20%;
   background-color: #212121;
-  border-style: groove;
-  background-image: url(https://i.imgur.com/7F4AwHg.png);
 }
 
 .housing-option {
@@ -63,20 +61,30 @@ a:link, a:visited, a:hover, a:active {
   padding: 35px;
   flex-flow: row nowrap;
   justify-content: space-between;
-  background-color: LightGoldenRodYellow;
-  border-style: groove;
-  margin: 2px 2px 2px 2px;
-
+  background-color: #FAFAFA;
+  margin: 5px;
 }
+
 .housing-info {
   display: flex;
   flex-flow: column wrap;
 }
+
 .housing-photo {
   max-width: 300px;
-
+  border: 1px solid #212121;
 }
 
+#housing-option {
+  font-size: 24pt;
+  font-weight: 600;
+  font-family: Montserrat;
+  text-decoration: none;
+}
+
+#ID {
+  font-size: 12pt;
+}
 
 .footer {
   padding: 3px 0px 3px 0px;
