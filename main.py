@@ -108,6 +108,8 @@ class UpdateReviews(webapp2.RequestHandler):
         current_time = datetime.datetime.now()
         housing = str(self.request.get('housing-name'))
 
+        reviews.create_user_review(user, current_time, housing, user_review, user_rating)
+
 
 app = webapp2.WSGIApplication([
     ("/", MainPage),
