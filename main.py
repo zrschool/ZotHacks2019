@@ -10,6 +10,11 @@ jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
 )
 
+class HousingOption(ndb.Model):
+    name = ndb.StringProperty()
+    rating = ndb.FloatProperty()
+    description = ndb.StringProperty()
+
 
 
 
