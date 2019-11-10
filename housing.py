@@ -1,10 +1,12 @@
 from google.appengine.ext import ndb
+import reviews
 
 class HousingOption(ndb.Model):
     name = ndb.StringProperty()
     rating = ndb.FloatProperty()
     location = ndb.StringProperty()
     photo = ndb.StringProperty()
+    reviews = ndb.StructuredProperty(reviews.UserReview, repeated=True)
     # description = ndb.StringProperty()
 
 def create_housing_option(option_name, option_rating, option_location, option_photo):
