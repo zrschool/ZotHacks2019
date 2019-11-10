@@ -9,7 +9,8 @@ p {
 
 #header {
   font-size: 250%;
-  background-color: RoyalBlue;
+  color:white;
+  background-color: DarkSlateBlue;
   font-family: 'Montserrat', sans-serif;
   padding: 8px;
 }
@@ -29,6 +30,9 @@ p {
   flex-flow: row nowrap;
   justify-content: space-between;
   background-color: LightGoldenRodYellow;
+  border-style: groove;
+  margin: 5px 5px 0px 5px;
+
 }
 .housing-info {
   display: flex;
@@ -42,6 +46,14 @@ h1 {
   font-size: 185%;
   font-family: 'Raleway', sans-serif;
 }
-border-bottom {
-  
+
+.footer {
+  padding: 0px 0px 0px 0px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: DarkSlateBlue;
+  color: white;
+  text-align: center;
 }
