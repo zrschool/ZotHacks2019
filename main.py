@@ -111,7 +111,7 @@ class UpdateDatabase(webapp2.RequestHandler):
 
         self.redirect("/")
 
-class UpdateReviews(webapp2.RequestHandler):
+class AddReview(webapp2.RequestHandler):
     def get(self):
         pass
 
@@ -130,5 +130,5 @@ app = webapp2.WSGIApplication([
     ("/add-housing-option", AddHousingOptionPage),
     ("/update-database", UpdateDatabase),
     ("/housing", HousingPage),
-    ("/add-review", UpdateReviews)
+    ("/add-review", AddReview)
 ], debug=True)
