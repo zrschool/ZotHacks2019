@@ -6,4 +6,12 @@ from google.appengine.ext import ndb
 class UserReview(ndb.model):
     user =  ndb.UserProperty()
     review = ndb.StringProperty()
-    ratings = ndb.FloatProperty()
+    rating = ndb.FloatProperty()
+
+def create_user_review(reviewing_user, housing_review, housing_rating):
+    user_review = UserReview(
+        user = reviewing_user,
+        review = housing_review,
+        rating = housing_rating
+    )
+    return user_review.put()
