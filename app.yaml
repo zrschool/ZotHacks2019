@@ -9,6 +9,11 @@ handlers:
   static_dir: stylesheets
 - url: /
   script: main.app
+- url: /add-housing-option
+  script: main.app
+- url: /update-database
+  script: main.app
+  login: required
 - url: /.*
   script: main.app
 
