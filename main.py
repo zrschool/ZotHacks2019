@@ -19,7 +19,7 @@ class MainPage(webapp2.RequestHandler):
             # "var_name" : var_name,
         }
 
-        template = jinja_env.get_template("templates/landing.html")
+        template = jinja_env.get_template("templates/main.html")
         self.response.write(template.render(template_vars))
 
     def post(self):
