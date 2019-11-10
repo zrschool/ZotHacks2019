@@ -16,8 +16,12 @@
       </div>
     </div>
     <form id="submission" method="POST" action="/update-database">
+      <p>Add A New Housing Option:</p>
+      <br>
       <input type="text" name="option-name" placeholder="Name of the housing option" required>
+      <br>
       <input type="text" name="option-location" placeholder ="Address of Location" required>
+      <br>
       <input type="text" name="option-photo" placeholder ="Link to a photo of the Housing" required>
       <p>Rating</p>
       <input type="radio" name="option-rating" value="1.0"> 1
@@ -25,6 +29,7 @@
       <input type="radio" name="option-rating" value="3.0"> 3
       <input type="radio" name="option-rating" value="4.0"> 4
       <input type="radio" name="option-rating" value="5.0"> 5
+      <br>
       <input type="submit" name="submit" value="Add Housing Option" class="button" id="submit">
     </form>
   </body>
