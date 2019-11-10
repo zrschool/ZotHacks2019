@@ -3,6 +3,8 @@ import jinja2
 import os
 import logging
 import housing
+import reviews
+import datetime
 
 from google.appengine.ext import ndb
 from google.appengine.api import users
@@ -95,10 +97,22 @@ class UpdateDatabase(webapp2.RequestHandler):
 
         self.redirect("/")
 
+class UpdateReviews(webapp2.RequestHandler):
+    def get(self):
+        pass
+
+    def post(self):
+        user = users.get_current_user()
+        user_review = str(self.request.get('housing-review'))
+        user_rating = str(self.request.get('housing-rating'))
+        current_time = datetime.datetime.now()
+        housing = str(self.request.get('housing-name'))
+
 
 app = webapp2.WSGIApplication([
     ("/", MainPage),
     ("/add-housing-option", AddHousingOptionPage),
     ("/update-database", UpdateDatabase),
     ("/housing", HousingPage),
+    ("/add-review", UpdateReviews)
 ], debug=True)
