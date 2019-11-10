@@ -1,6 +1,6 @@
 body {
-  padding: 0;
-  margin: 65px 0px 0px;
+  padding: 0px;
+  margin: 65px 0px 0px 0px;
 }
 
 h1 {
@@ -28,6 +28,7 @@ p {
 #content {
   display: flex;
   flex-flow: row nowrap;
+  width: 100%;
 }
 
 #header {
@@ -52,9 +53,8 @@ a:link, a:visited, a:hover, a:active {
 }
 #right-column {
   width: 20%;
-  background-color: LightGoldenRodYellow;
+  background-color: #212121;
   border-style: groove;
-  margin: 2px 0px 2px 0px;
   background-image: url(https://i.imgur.com/7F4AwHg.png);
 }
 
@@ -79,8 +79,7 @@ a:link, a:visited, a:hover, a:active {
 
 
 .footer {
-  padding: 3px;
-  font-size: 100%;
+  padding: 3px 0px 3px 0px;
   color:white;
   background-color: DarkSlateBlue;
   font-family: 'Montserrat', sans-serif;
