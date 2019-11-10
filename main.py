@@ -19,8 +19,8 @@ class HousingOption(ndb.Model):
 
 """
     TODO:
-    - Deliver
-
+    - Make add_housing_option function (see lines 31 through 44)
+        - Take parameters: (name, rating, description="no description found")
 """
 
 
