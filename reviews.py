@@ -3,7 +3,7 @@
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
-class UserReview(ndb.model):
+class UserReview(ndb.Model):
     user =  ndb.UserProperty()
     review = ndb.StringProperty()
     rating = ndb.FloatProperty()
