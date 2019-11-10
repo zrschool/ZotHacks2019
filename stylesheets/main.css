@@ -11,13 +11,13 @@ body {
 }
 
 #title {
+  font-size: 250%;
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
   padding-left: 10px;
 }
 
 #subtitle {
-  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }
 
@@ -31,8 +31,8 @@ p {
   font-size: 120%;
 }
 
-#about-page {
-  font-size: 60%;
+#links {
+  font-size: 150%;
   float:right;
   padding: 2px;
   margin: 7px 17px 2px 0px;
@@ -45,7 +45,6 @@ p {
 }
 
 #header {
-  font-size: 250%;
   color:white;
   background-color: DarkSlateBlue;
   font-family: 'Montserrat', sans-serif;
