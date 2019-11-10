@@ -25,6 +25,7 @@
             </p>
           </div>
 
+<<<<<<< HEAD
           <div>
             <img class="housing-photo" src="http://mithun.com/wp-content/uploads/2017/12/Mithun_UCIMesaCourtTowers_PhotoBruceDamonte.jpg" alt="">
           </div>
@@ -61,6 +62,18 @@
             <img class="housing-photo" src="http://mithun.com/wp-content/uploads/2017/12/Mithun_UCIMesaCourtTowers_PhotoBruceDamonte.jpg" alt="">
           </div>
 
+=======
+    <div id="left-column">
+      {% for item in housing_options %}
+      <div class="housing-option">
+        <div class="housing-info">
+          <h1>{{item}}</h1>
+          <p>Location: </p>
+          <p>Average rating: </p>
+        </div>
+        <div>
+          <img class="housing-photo" src="http://mithun.com/wp-content/uploads/2017/12/Mithun_UCIMesaCourtTowers_PhotoBruceDamonte.jpg" alt="">
+>>>>>>> 51355387cf2b396b18f1f50f441dc0df1aad2f6a
         </div>
         <div class="housing-option">
           <div class="housing-info">
@@ -79,6 +92,7 @@
 
         </div>
       </div>
+      {% endfor %}
 
       <div id="right-column">
       12
