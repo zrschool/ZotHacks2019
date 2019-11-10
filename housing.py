@@ -5,11 +5,11 @@ class HousingOption(ndb.Model):
     rating = ndb.FloatProperty()
     description = ndb.StringProperty()
 
-def create_housing_option(name, rating, description):
+def create_housing_option(name, rating):
     new_option = HousingOption(
         housing_name = name,
         rating = rating,
-        description = description
+        # description = description
     )
     return new_option.put()
 

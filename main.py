@@ -97,13 +97,15 @@ class AddHousingOptionPage(webapp2.RequestHandler):
         template = jinja_env.get_template("templates/add-housing-option.html")
         self.response.write(template.render(template_vars))
 
-    def post(self):
-        pass
-
 
 class UpdateDatabase(webapp2.RequestHandler):
     def post(self):
-        pass
+        housing_option_name = self.request.get("name").lower()
+        housing_option_rating = self.request.get("rating").lower()
+
+        create_housing_option(housing_option_name, housing_option_rating)
+
+        self.redirect("/")
 
 
 app = webapp2.WSGIApplication([
