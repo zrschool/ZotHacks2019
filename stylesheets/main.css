@@ -6,6 +6,8 @@ body {
 .content-box {
   color: black;
   background-color: white;
+  font-family: 'Raleway', sans-serif;
+  font-size: 100%;
   margin: 5px;
   padding: 10px;
 }
