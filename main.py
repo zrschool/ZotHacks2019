@@ -15,42 +15,40 @@ jinja_env = jinja2.Environment(
 )
 
 
-class HousingOption(ndb.Model):
-    name = ndb.StringProperty()
-    rating = ndb.FloatProperty()
-    location = ndb.StringProperty()
-    photo = ndb.StringProperty()
-    # description = ndb.StringProperty()
+# class HousingOption(ndb.Model):
+#     name = ndb.StringProperty()
+#     rating = ndb.FloatProperty()
+#     location = ndb.StringProperty()
+#     photo = ndb.StringProperty()
+#     # description = ndb.StringProperty()
 
-def make_housing_option(housing_name, average_rating, housing_description):
-    '''
-    Creates HousingOption Model
-    '''
-    return HousingOption(
-        name = housing_name,
-        rating = average_rating,
-        description = housing_description
-    )
+# def make_housing_option(housing_name, average_rating, housing_description):
+#     '''
+#     Creates HousingOption Model
+#     '''
+#     return HousingOption(
+#         name = housing_name,
+#         rating = average_rating,
+#         description = housing_description
+#     )
 
-def get_key_id(housing_option):
-    '''
-    Get model's id and puts the model into the database
-    '''
-    housing_option_key = housing_option.put()
-    pair = housing_option_key.pairs()
-    return pair[0][1]
+# def get_key_id(housing_option):
+#     '''
+#     Get model's id and puts the model into the database
+#     '''
+#     housing_option_key = housing_option.put()
+#     pair = housing_option_key.pairs()
+#     return pair[0][1]
 
 
 class MainPage(webapp2.RequestHandler):
-
-
     def get(self):
-
         # Make a list of all housing options
-        housing_options = HousingOption.query().order(HousingOption.name).order(-HousingOption.name)
+        housing_options = housing.housing_option_lex()
         housing_options_keys = {}
         for item in housing_options:
-            housing_options_keys[item.name] = get_key_id(item)
+            print(item.name)
+            housing_options_keys[item.name] = housing.get_id(item)
 
         print(housing_options_keys)
 
@@ -62,6 +60,9 @@ class MainPage(webapp2.RequestHandler):
 
         template = jinja_env.get_template("templates/main.html")
         self.response.write(template.render(template_vars))
+
+    def post(self):
+        pass
 
 
 
@@ -77,24 +78,25 @@ class AddHousingOptionPage(webapp2.RequestHandler):
         template = jinja_env.get_template("templates/add-housing-option.html")
         self.response.write(template.render(template_vars))
 
+    def post(self):
+        pass
 
 class HousingPage(webapp2.RequestHandler):
     def get(self):
         housing_id = self.request.get("id")
-        housing_query = housing.housing_option_list()
-        current_housing = HousingOption(
-            name = "dsa",
-            rating = 0.0
-        )
+        housing_query = housing.housing_option_lex()
+        current_housing = None
         for option in housing_query:
             if housing.get_id(option) == int(housing_id):
                 current_housing = option
 
+        housing_reviews = reviews.get_reviews(housing_id)
 
 
         template_vars = {
             "current_housing" : current_housing,
             "housing_id" : housing_id,
+            "reviews" : housing_reviews
         }
 
         template = jinja_env.get_template("templates/housing.html")
@@ -135,11 +137,13 @@ class AddReview(webapp2.RequestHandler):
     def post(self):
         user = users.get_current_user()
         user_review = str(self.request.get('housing-review'))
-        user_rating = str(self.request.get('housing-rating'))
+        user_rating = float(self.request.get('housing-rating'))
         current_time = datetime.datetime.now()
-        housing = str(self.request.get('housing-name'))
+        housing = self.request.get('id')
 
         reviews.create_user_review(user, current_time, housing, user_review, user_rating)
+
+        self.redirect('/housing?id=' + housing)
 
 
 app = webapp2.WSGIApplication([

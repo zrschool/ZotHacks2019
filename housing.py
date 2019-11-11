@@ -8,7 +8,6 @@ class HousingOption(ndb.Model):
     rating = ndb.FloatProperty()
     location = ndb.StringProperty()
     photo = ndb.StringProperty()
-    user_reviews = ndb.KeyProperty(kind = reviews.UserReview, repeated=True)
     # description = ndb.StringProperty()
 
 def create_housing_option(option_name, option_rating, option_location, option_photo):
@@ -16,28 +15,29 @@ def create_housing_option(option_name, option_rating, option_location, option_ph
         name = option_name,
         rating = option_rating,
         location = option_location,
-        photo = option_photo,
-        user_reviews = []
+        photo = option_photo
         # description = description
     )
+    print(new_option)
     new_option.put()
-    # return new_option.key()
 
-def calculate_average_rating(housing_option):
-    total_rating_score = 0
-    user_reviews = housing_option.reviews
-    if len(user_reviews) != 0:
-        for review in user_reviews:
-            total_rating_score += review.rating
-        housing_option.rating = total_rating_score / len(user_reviews)
-    else:
-        housing_option.rating = 0
+# def calculate_average_rating(housing_option):
+#     total_rating_score = 0
+#     user_reviews = housing_option.reviews
+#     if len(user_reviews) != 0:
+#         for review in user_reviews:
+#             total_rating_score += review.rating
+#         housing_option.rating = total_rating_score / len(user_reviews)
+#     else:
+#         housing_option.rating = 0
         
-    housing_option.put()
+#     housing_option.put()
     
 def housing_option_list():
     return list(HousingOption.query().fetch())
 
+def housing_option_lex():
+    return HousingOption.query().order(HousingOption.name)
 
 def get_id(housing_option):
     housing_option_key = housing_option.put()
