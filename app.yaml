@@ -11,13 +11,13 @@ handlers:
   script: main.app
 - url: /add-housing-option
   script: main.app
+  login: required
 - url: /update-database
   script: main.app
 - url: /housing
   script: main.app
 - url: /about-page
   script: main.app
-  login: required
 - url: /.*
   script: main.app
 
