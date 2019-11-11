@@ -38,14 +38,16 @@ def get_key_id(housing_option):
     '''
     housing_option_key = housing_option.put()
     pair = housing_option_key.pairs()
-    return pair[0][1]
+    return pair[0][1]    
 
 
 class MainPage(webapp2.RequestHandler):
+    
+
     def get(self):
 
         # Make a list of all housing options
-        housing_options = HousingOption.query()
+        housing_options = HousingOption.query().order(HousingOption.name).order(-HousingOption.name)
         housing_options_keys = {}
         for item in housing_options:
             housing_options_keys[item.name] = get_key_id(item)
