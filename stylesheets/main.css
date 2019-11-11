@@ -66,6 +66,10 @@ a:link, a:visited, a:hover, a:active {
   width: 80%;
   background-color: #212121;
 }
+#left-lower-column{
+  width: 80%;
+  background-color: #FAFAFA;
+}
 #right-column {
   width: 20%;
   background-color: #212121;
