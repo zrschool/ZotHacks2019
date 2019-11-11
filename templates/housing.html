@@ -19,7 +19,7 @@
 
     <div id="content">
       <div id="left-column">
-        <div class="housing-option">
+        <div class="content-box">
           <div class="housing-info">
             <p id="housing-option" style="margin:0px;">{{current_housing.name}}</p>
             <p id="ID">ID: {{housing_id}}</p>
@@ -31,28 +31,37 @@
             <img class="housing-photo" src="{{current_housing.photo}}" alt="No Photo Available" style="font-family: Montserrat; padding: 5px;">
           </div>
         </div>
-        <div id="left-lower-column">
-            <form id="submission" method="POST" action="/add-review?id={{housing_id}}">
-              <p>Write a review:</p>
-              <br>
-              <input type="text" name="housing-review" placeholder ="Write review here..." required>
-              <br>
-              <p>Rating</p>
-              <input type="radio" name="housing-rating" value="1.0"> 1
-              <input type="radio" name="housing-rating" value="2.0"> 2
-              <input type="radio" name="housing-rating" value="3.0"> 3
-              <input type="radio" name="housing-rating" value="4.0"> 4
-              <input type="radio" name="housing-rating" value="5.0"> 5
-              <br>
-              <input type="submit" name="submit" value="Submit Review" class="button" id="submit">
-            </form>
-            {% for review in reviews %}
-            <p>{{review.user}}</p>
-            <p>{{review.date_time}}</p>
-            <p>{{review.review}}</p>
-            <p>Rating: {{review.rating}}</p>
-            {% endfor %}
-        </div>
+          <div id="review-section" class="content-box">
+            <p id="housing-option" style="margin:0px;">Reviews</p>
+            <div id="review-prompt" class="content-box">
+              <form id="submission" method="POST" action="/add-review?id={{housing_id}}">
+                <p>Write a review:</p>
+                <input type="text" name="review-body" placeholder ="Write review here..." required>
+                <br>
+                <p>Rating</p>
+                <input type="radio" name="review-rating" value="1.0"> 1
+                <input type="radio" name="review-rating" value="2.0"> 2
+                <input type="radio" name="review-rating" value="3.0"> 3
+                <input type="radio" name="review-rating" value="4.0"> 4
+                <input type="radio" name="review-rating" value="5.0"> 5
+                <br>
+                <input type="submit" name="submit" value="Submit Review" class="button" id="submit">
+                <br>
+              </form>
+            </div>
+            <div id="housing-reviews">
+              {% for review in current_housing.reviews %}
+              <div id="review">
+                <div id="review-metadata">
+                  <p id="review-user">User: {{review.get().user}}</p>
+                  <p id="review-rating">Rating: {{review.get().rating}}</p>
+                  <p id="review-date">Posted: {{review.get().date_time}}</p>
+                </div>
+                <p id="review-body">{{review.get().review_body}}</p>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
 
       </div>
       <div id="right-column">
@@ -62,7 +71,7 @@
     <div class="footer">
       <p>Created at ZotHacks 2019</p>
       <p style="margin-top: -20px;">By Team SLB</p>
-      <p style="margin-top: -20px;">House MT</p>  
+      <p style="margin-top: -20px;">House MT</p>
     </div>
 
   </body>

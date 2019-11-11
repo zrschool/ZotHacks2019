@@ -1,15 +1,22 @@
-from google.appengine.ext import ndb
 import reviews
 import sys
+
+from google.appengine.ext import ndb
+from reviews import UserReview
+
+
 sys.dont_write_bytecode = True
+
 
 class HousingOption(ndb.Model):
     name = ndb.StringProperty()
     rating = ndb.FloatProperty()
     location = ndb.StringProperty()
     photo = ndb.StringProperty()
-    user_reviews = ndb.KeyProperty(kind = reviews.UserReview, repeated=True)
-    # description = ndb.StringProperty()
+    reviews = ndb.KeyProperty(
+        kind = UserReview,
+        repeated = True,
+    )
 
 def create_housing_option(option_name, option_rating, option_location, option_photo):
     new_option = HousingOption(
@@ -17,7 +24,7 @@ def create_housing_option(option_name, option_rating, option_location, option_ph
         rating = option_rating,
         location = option_location,
         photo = option_photo,
-        user_reviews = []
+        reviews = []
         # description = description
     )
     new_option.put()
@@ -32,9 +39,9 @@ def calculate_average_rating(housing_option):
         housing_option.rating = total_rating_score / len(user_reviews)
     else:
         housing_option.rating = 0
-        
+
     housing_option.put()
-    
+
 def housing_option_list():
     return list(HousingOption.query().fetch())
 

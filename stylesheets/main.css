@@ -4,12 +4,12 @@ body {
 }
 
 .content-box {
-  color: black;
-  background-color: white;
-  font-family: 'Raleway', sans-serif;
-  font-size: 100%;
+  display: flex;
+  padding: 35px;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  background-color: #FAFAFA;
   margin: 5px;
-  padding: 10px;
 }
 
 #title {
@@ -75,13 +75,36 @@ a:link, a:visited, a:hover, a:active {
   background-color: #212121;
 }
 
-.housing-option {
+#review {
+  display: block;
+  padding: 10px;
+}
+
+#housing-reviews {
+  height: 200px;
+  overflow: scroll;
+  border: 1px solid #212121;
+}
+#review-section {
+  display: block;
+}
+
+#review #review-metadata {
+  width: 100%;
+
   display: flex;
-  padding: 35px;
-  flex-flow: row nowrap;
   justify-content: space-between;
-  background-color: #FAFAFA;
-  margin: 5px;
+  flex-flow: row wrap;
+}
+
+#review #review-body {
+  background-color: LightGrey;
+  display: flex;
+  padding: 5px;
+}
+
+.housing-option {
+
 }
 
 .housing-info {
