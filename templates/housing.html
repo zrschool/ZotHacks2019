@@ -31,6 +31,28 @@
             <img class="housing-photo" src="{{current_housing.photo}}" alt="No Photo Available" style="font-family: Montserrat; padding: 5px;">
           </div>
         </div>
+        <div id="left-lower-column">
+            <form id="submission" method="POST" action="/add-review?id={{housing_id}}">
+              <p>Write a review:</p>
+              <br>
+              <input type="text" name="housing-review" placeholder ="Write review here..." required>
+              <br>
+              <p>Rating</p>
+              <input type="radio" name="housing-rating" value="1.0"> 1
+              <input type="radio" name="housing-rating" value="2.0"> 2
+              <input type="radio" name="housing-rating" value="3.0"> 3
+              <input type="radio" name="housing-rating" value="4.0"> 4
+              <input type="radio" name="housing-rating" value="5.0"> 5
+              <br>
+              <input type="submit" name="submit" value="Submit Review" class="button" id="submit">
+            </form>
+            {% for review in reviews %}
+            <p>{{review.user}}</p>
+            <p>{{review.date_time}}</p>
+            <p>{{review.review}}</p>
+            <p>Rating: {{review.rating}}</p>
+            {% endfor %}
+        </div>
 
       </div>
       <div id="right-column">

@@ -20,6 +20,11 @@ class HousingOption(ndb.Model):
     rating = ndb.FloatProperty()
     location = ndb.StringProperty()
     photo = ndb.StringProperty()
+    user_reviews = ndb.KeyProperty(
+        kind = reviews.UserReview, 
+        repeated=True
+    )
+
     # description = ndb.StringProperty()
 
 def make_housing_option(housing_name, average_rating, housing_description):
@@ -29,7 +34,8 @@ def make_housing_option(housing_name, average_rating, housing_description):
     return HousingOption(
         name = housing_name,
         rating = average_rating,
-        description = housing_description
+        description = housing_description,
+        user_reviews = []
     )
 
 def get_key_id(housing_option):
@@ -86,15 +92,18 @@ class HousingPage(webapp2.RequestHandler):
             name = "dsa",
             rating = 0.0
         )
+        housing_reviews = reviews.get_reviews(housing_id)
         for option in housing_query:
             if housing.get_id(option) == int(housing_id):
                 current_housing = option
 
-
+       
+    
 
         template_vars = {
             "current_housing" : current_housing,
             "housing_id" : housing_id,
+            "reviews": housing_reviews
         }
 
         template = jinja_env.get_template("templates/housing.html")
@@ -135,11 +144,14 @@ class AddReview(webapp2.RequestHandler):
     def post(self):
         user = users.get_current_user()
         user_review = str(self.request.get('housing-review'))
-        user_rating = str(self.request.get('housing-rating'))
+        user_rating = float(self.request.get('housing-rating'))
         current_time = datetime.datetime.now()
-        housing = str(self.request.get('housing-name'))
+        housing = self.request.get("id")
 
         reviews.create_user_review(user, current_time, housing, user_review, user_rating)
+
+
+        self.redirect("/")
 
 
 app = webapp2.WSGIApplication([
