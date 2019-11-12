@@ -192,9 +192,6 @@ class AddReview(webapp2.RequestHandler):
         self.redirect("/housing?id=" + housing_id)
 
 
-        self.redirect('/housing?id=' + housing)
-
-
 app = webapp2.WSGIApplication([
     ("/", MainPage),
     ("/add-housing-option", AddHousingOptionPage),
