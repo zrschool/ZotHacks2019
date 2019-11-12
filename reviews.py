@@ -10,36 +10,39 @@ class UserReview(ndb.Model):
     user =  ndb.UserProperty()
     date_time = ndb.DateTimeProperty()
     housing = ndb.IntegerProperty()
-    review = ndb.StringProperty()
+    review_body = ndb.StringProperty()
     rating = ndb.FloatProperty()
 
-# def get_key(user_review):
-#     '''
-#     Get model's id and puts the model into the database
-#     '''
-#     user_review_key = user_review.put()
-#     return user_review_key
+def get_key_id(housing_option):
+    '''
+    Get model's id and puts the model into the database
+    '''
+    housing_option_key = housing_option.put()
+    pair = housing_option_key.pairs()
+    return pair[0][1]
+
+def get_key(user_review):
+    '''
+    Get model's id and puts the model into the database
+    '''
+    user_review_key = user_review.put()
+    return user_review_key
 
 def create_user_review(reviewing_user, submit_time, housing_id ,housing_review, housing_rating):
-    # housing_query = housing.housing_option_list()
-    # current_housing = None
-    # for option in housing_query:
-    #     if housing.get_id(option) == int(housing_id):
-    #         current_housing = option
-    
+    """
+    Creates instance of UserReview model and places it in database, then returns
+    created model.
+    """
     user_review = UserReview(
         user = reviewing_user,
         date_time = submit_time,
         housing = int(housing_id),
-        review = housing_review,
+        review_body = housing_review,
         rating = housing_rating
-    )
-    # current_housing.user_reviews.append(get_key(user_review))
-    # current_housing.put()
-    user_review.put()
-    
+    ).put()
+
+    return user_review
+
 def get_reviews(id):
     review_list = UserReview.query()
     return review_list.filter(UserReview.housing == int(id))
-
-
